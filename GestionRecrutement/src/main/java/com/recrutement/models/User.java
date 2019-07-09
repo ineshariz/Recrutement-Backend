@@ -1,5 +1,6 @@
 package com.recrutement.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,14 +16,17 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity(name = "User")
 @Table(name = "User")
-public class User {
+public class User implements Serializable{
 	@Id
 	@Column
 	@GeneratedValue(strategy=GenerationType.AUTO) 
 	private int id;
 	
 	@Column
-	private String nomPrenom;
+	private String nom;
+	
+	@Column
+	private String prenom;
 	
 	@Column
 	private String pass;
@@ -31,18 +35,10 @@ public class User {
 	private String email;
 	
 	@Column
-	private Date dateRecurtement;
-	
-	@Column
-	private String cv;
-
-	@Column
-	private String numTel;
+	private Date dateNaissance;
 	
 	@Column
 	private String photo;
- 
-	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
@@ -52,15 +48,14 @@ public class User {
 
 	}
 
-	public User(int id, String nomPrenom, String pass, String email, Date dateRecurtement, String cv, 
+	public User(int id, String nom, String pass, String email, Date dateNaissance, String cv, 
 			Role role, String photo) {
 		super();
 		this.id = id;
-		this.nomPrenom = nomPrenom;
+		this.nom = nom;
 		this.pass = pass;
 		this.email = email;
-		this.dateRecurtement = dateRecurtement;
-		this.cv = cv;
+		this.dateNaissance = dateNaissance;
 		this.role = role;
 		this.photo = photo;
 	}
@@ -75,57 +70,36 @@ public class User {
 		this.email = email;
 	}
 
-	public Date getDateRecurtement() {
-		return dateRecurtement;
+	public Date getDateNaissance() {
+		return dateNaissance;
 	}
 
-	public void setDateRecurtement(Date dateRecurtement) {
-		this.dateRecurtement = dateRecurtement;
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
-
-	public String getCv() {
-		return cv;
-	}
-
-	public void setCv(String cv) {
-		this.cv = cv;
-	}
-
 	
 	public Role getRole() {
 		return role;
 	}
 
-
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
-
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getNumTel() {
-		return numTel;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setNumTel(String numTel) {
-		this.numTel = numTel;
-	}
-
-	public String getNomPrenom() {
-		return nomPrenom;
-	}
-
-	public void setNomPrenom(String nomPrenom) {
-		this.nomPrenom = nomPrenom;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public String getPass() {
@@ -140,7 +114,6 @@ public class User {
 	public String getPhoto() {
 		return photo;
 	}
-
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
