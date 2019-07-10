@@ -17,7 +17,6 @@ import javax.annotation.Resource;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource(name = "userService")
@@ -45,9 +44,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	http.httpBasic().disable();
         http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/token/*","/cv/*").permitAll()
+                .antMatchers("/token/*","/check").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
