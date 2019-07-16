@@ -34,6 +34,7 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
+    
     @RequestMapping(value = "token/generate-token", method = RequestMethod.POST)
     public ResponseEntity<?> register(@RequestBody LoginUser loginUser) throws AuthenticationException {
     	System.out.println("hey u");
