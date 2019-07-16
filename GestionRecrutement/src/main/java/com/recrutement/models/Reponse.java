@@ -1,7 +1,5 @@
 package com.recrutement.models;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Reponse implements Serializable{
+public class Reponse {
 
 	@Id
 	@Column

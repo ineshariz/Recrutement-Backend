@@ -9,14 +9,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.recrutement.dao.UserRepostory;
+import com.recrutement.dao.UserRepository;
 import com.recrutement.models.User;
 
 @Service(value= "userService")
 public class UserServiceImpl implements UserService, UserDetailsService{
 	
 	@Autowired
-	private UserRepostory userRepository;
+	private UserRepository userRepository;
 
 	@Override
 	public User addUser(User user) {

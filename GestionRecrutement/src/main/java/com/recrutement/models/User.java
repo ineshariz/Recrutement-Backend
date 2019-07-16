@@ -1,6 +1,5 @@
 package com.recrutement.models;
 
-import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,15 +7,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity(name = "User")
-@Table(name = "User")
-public class User implements Serializable{
+@Inheritance(strategy = InheritanceType.JOINED)
+public class User {
+	
 	@Id
 	@Column
 	@GeneratedValue(strategy=GenerationType.AUTO) 
@@ -117,6 +117,14 @@ public class User implements Serializable{
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}	
 
 	

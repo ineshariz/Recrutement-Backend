@@ -1,6 +1,5 @@
 package com.recrutement.models;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "offre")
 @Table(name = "offre")
-public class Offre implements Serializable {
+public class Offre {
 
 	@Id
 	@Column
@@ -90,6 +89,10 @@ public class Offre implements Serializable {
 
 	public void setEtat(String etat) {
 		this.etat = etat;
+	}
+
+	public Offre() {
+		super();
 	}
 	
 	
