@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.recrutement.dao.RoleRepository;
 import com.recrutement.models.Role;
 
+
 @Service(value= "roleService")
 public class RoleServiceImpl implements RoleService {
 	
