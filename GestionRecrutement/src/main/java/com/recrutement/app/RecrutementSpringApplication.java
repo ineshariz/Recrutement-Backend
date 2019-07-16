@@ -3,6 +3,7 @@ package com.recrutement.app;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -10,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.recrutement.models.Candidat;
@@ -19,13 +21,13 @@ import com.recrutement.service.RoleService;
 import com.recrutement.service.UserService;
 
 
-
+@EnableWebSecurity
 @EnableJpaAuditing
 @SpringBootApplication
 @EntityScan("com.recrutement.models")
-@ComponentScan("com.recrutement.service")
+@ComponentScan({"com.recrutement.service","com.recrutement.controller","com.recrutement.conf"})
 @EnableJpaRepositories("com.recrutement.dao")
-public class RecrutementSpringApplication  {
+public class RecrutementSpringApplication implements CommandLineRunner {
 	
 	@Autowired
 	static UserService us;
@@ -34,10 +36,10 @@ public class RecrutementSpringApplication  {
 	static RoleService rs;
 	
 	
-	public static void main(String[] args) throws NullPointerException{
+	public static void main(String[] args) {
 		ApplicationContext applicationContext=SpringApplication.run(RecrutementSpringApplication.class, args);
+		/*
 		
-		/* 
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		
 		us=(UserService)applicationContext.getBean("userService");
@@ -70,6 +72,13 @@ public class RecrutementSpringApplication  {
 		us.addUser(r);
 		*/
 				
+	}
+
+
+	@Override
+	public void run(String... args) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 
