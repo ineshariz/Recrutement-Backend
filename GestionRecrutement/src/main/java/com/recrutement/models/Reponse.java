@@ -2,9 +2,15 @@ package com.recrutement.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Reponse {
@@ -23,6 +29,11 @@ public class Reponse {
 	@Column
 	private boolean active;
 
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "question_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+	private Question question;
+	
 	public int getId() {
 		return id;
 	}
@@ -53,6 +64,14 @@ public class Reponse {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 	
 	

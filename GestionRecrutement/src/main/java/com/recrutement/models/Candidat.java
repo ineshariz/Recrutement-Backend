@@ -36,6 +36,4 @@ public class Candidat extends User{
 		this.dateInscription = dateInscription;
 	}
 	
-	
-	
 }
