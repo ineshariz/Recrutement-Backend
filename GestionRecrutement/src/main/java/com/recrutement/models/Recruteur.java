@@ -1,12 +1,19 @@
 package com.recrutement.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -20,6 +27,9 @@ public class Recruteur extends User{
 	@Column
 	private Date dateRecrutement;
 
+	@ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "recruteurs")
+	private List<Entretien> entretiens= new ArrayList<>();
+	
 	public String getDepartement() {
 		return departement;
 	}
@@ -34,6 +44,14 @@ public class Recruteur extends User{
 
 	public void setDateRecrutement(Date dateRecrutement) {
 		this.dateRecrutement = dateRecrutement;
+	}
+
+	public List<Entretien> getEntretiens() {
+		return entretiens;
+	}
+
+	public void setEntretiens(List<Entretien> entretiens) {
+		this.entretiens = entretiens;
 	}
 	
 	

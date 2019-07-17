@@ -3,10 +3,16 @@ package com.recrutement.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity(name = "offre")
 @Table(name = "offre")
@@ -35,6 +41,11 @@ public class Offre {
 	@Column
 	private String etat;
 
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "recruteur_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+	private User recruteur;
+	
 	public int getId() {
 		return id;
 	}
@@ -94,7 +105,13 @@ public class Offre {
 	public Offre() {
 		super();
 	}
-	
-	
+
+	public User getRecruteur() {
+		return recruteur;
+	}
+
+	public void setRecruteur(User recruteur) {
+		this.recruteur = recruteur;
+	}
 	
 }
