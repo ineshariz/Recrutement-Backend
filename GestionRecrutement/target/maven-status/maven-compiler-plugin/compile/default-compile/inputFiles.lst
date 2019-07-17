@@ -2,11 +2,17 @@ C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\rec
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\User.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Quiz.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\dao\RoleRepository.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\dao\DemandeRepository.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Offre.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\conf\JwtAuthenticationFilter.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\OffreService.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\RoleService.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\dao\QuestionRepository.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\AuthenticationController.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\conf\JwtAuthenticationEntryPoint.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\dao\OffreRepository.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\dao\EntretienRepository.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\dao\QuizRepository.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\RoleServiceImpl.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\LoginUser.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Candidat.java
@@ -23,5 +29,6 @@ C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\rec
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\UserService.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\AuthToken.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Question.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\OffreServiceImpl.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\conf\WebSecurityConfig.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Constants.java
