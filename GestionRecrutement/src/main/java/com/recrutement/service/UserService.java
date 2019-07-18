@@ -16,4 +16,5 @@ public interface UserService {
 	 User findById(Integer id);
 	 	 
 	 Optional<User> findByEmail(String nomPrenom);
+	 
 }
