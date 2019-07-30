@@ -33,7 +33,7 @@ public class Demande {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "candidat_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-	private User candidat;
+	private Candidat candidat;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "offre_id", nullable = false)
@@ -72,11 +72,11 @@ public class Demande {
 		this.etat = etat;
 	}
 
-	public User getCandidat() {
+	public Candidat getCandidat() {
 		return candidat;
 	}
 
-	public void setCandidat(User candidat) {
+	public void setCandidat(Candidat candidat) {
 		this.candidat = candidat;
 	}
 
