@@ -3,6 +3,11 @@ package com.recrutement.service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,11 +15,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.recrutement.dao.UserRepository;
+import com.recrutement.models.Offre;
 import com.recrutement.models.User;
 
 @Service(value= "userService")
 public class UserServiceImpl implements UserService, UserDetailsService{
-	
+	@PersistenceContext()
+	EntityManager em ;
 	@Autowired
 	private UserRepository userRepository;
 
@@ -63,6 +70,15 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	public Optional<User> findByEmail(String email) {
 		Optional<User> findUser = userRepository.findByEmail(email);
 		return findUser;
+	}
+
+	@Override
+	public List<Number> nombreCandidat(Offre offre) {
+				Query query = em.createQuery("SELECT COUNT(a.id) FROM Demande a  WHERE a.offre.id ="+offre.getId());
+		        System.out.println(query.toString());       
+				return  query.getResultList();
+
+	
 	}
 
 	

@@ -28,7 +28,6 @@ public class Entretien {
 	@Column
 	@GeneratedValue(strategy=GenerationType.AUTO) 
 	private int id;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MMM d, yyyy")
 
 	@Column
 	private Date date;
