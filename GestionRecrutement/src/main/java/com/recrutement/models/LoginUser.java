@@ -5,7 +5,17 @@ public class LoginUser {
     private String username;
     private String password;
 
-    public String getUsername() {
+    
+    public LoginUser() {
+		super();
+	}
+
+	public LoginUser(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+	public String getUsername() {
         return username;
     }
 

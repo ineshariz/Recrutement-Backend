@@ -1,13 +1,20 @@
 package com.recrutement.controller;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.recrutement.models.Candidat;
+import com.recrutement.models.Quiz;
+import com.recrutement.models.Recruteur;
 import com.recrutement.models.User;
 import com.recrutement.service.UserService;
 
@@ -25,4 +32,22 @@ public class UserController {
 		return userService.findByEmail(email);  
 	}
 
+	@RequestMapping(value="/recruteurs",method=RequestMethod.POST, produces = "application/json")
+	public Recruteur addRecruteur(@RequestBody Recruteur recruteur) {
+		return userService.addRecruteur(recruteur);
+	}
+	
+	@RequestMapping(value="/recruteurs",method=RequestMethod.PUT, produces = "application/json")
+	public Recruteur editRecruteur(@RequestBody Recruteur recruteur) {
+		return userService.editRecruteur(recruteur);
+	}
+	
+	@RequestMapping(value="/recruteurs",method=RequestMethod.GET, produces = "application/json")
+	public List<Recruteur> listRecruteur() {
+		return userService.getListRecruteur();
+	}
+	
+	
+	
 }
+ 

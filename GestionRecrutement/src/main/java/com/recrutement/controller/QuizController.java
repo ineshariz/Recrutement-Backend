@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,13 +42,18 @@ public class QuizController {
 	}
 	
 	@RequestMapping(value="/{id}/question", method=RequestMethod.GET)
-	public List<Question> getListQuestionByQuiz(){
-		return questionService.getAll();
+	public List<Question> getListQuestionByQuiz(@PathVariable int id){
+		return questionService.getAllByQuizId(id);
 	}
 	
-	@RequestMapping(value="/{id}/question", method=RequestMethod.POST)
+	@RequestMapping(value="/question", method=RequestMethod.POST)
 	public Question addQuestionToQuiz(@RequestBody Question question){
 		return questionService.commit(question);
+	}
+	
+	@RequestMapping(value="/question/{id}", method=RequestMethod.DELETE)
+	public void deleteQuestion(@PathVariable int id){
+		questionService.delete(id);
 	}
 	
 	@RequestMapping(value="/{id}/question/{id}/reponse", method=RequestMethod.GET)
@@ -55,9 +61,9 @@ public class QuizController {
 		return reponseService.getAll();
 	}
 	
-	@RequestMapping(value="/{id}/question/{id}/reponse", method=RequestMethod.POST)
+	/*@RequestMapping(value="/reponse", method=RequestMethod.POST)
 	public Reponse addReponseToQuestion(@RequestBody Reponse reponse){
 		return reponseService.commit(reponse);
-	}
+	}*/
 	
 }

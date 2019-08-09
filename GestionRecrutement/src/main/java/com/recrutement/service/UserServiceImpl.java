@@ -1,6 +1,7 @@
 package com.recrutement.service;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.recrutement.dao.RecruteurRepository;
 import com.recrutement.dao.UserRepository;
+import com.recrutement.models.Candidat;
+import com.recrutement.models.Recruteur;
 import com.recrutement.models.User;
 
 @Service(value= "userService")
@@ -17,7 +22,16 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	@Autowired
+	private RecruteurRepository recruteurRepository;
+	
+	@Autowired
+	static RoleService roleService;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	@Override
 	public User addUser(User user) {
 		return userRepository.save(user);
@@ -27,8 +41,6 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	public List<User> getListUser() {
 		return userRepository.findAll();
 	}
-	
-	
 
 	@Override
 	public User findById(Integer id) {
@@ -63,6 +75,32 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	public Optional<User> findByEmail(String email) {
 		Optional<User> findUser = userRepository.findByEmail(email);
 		return findUser;
+	}
+
+	@Override
+	public Recruteur addRecruteur(Recruteur recruteur) {
+		recruteur.setPass(bCryptPasswordEncoder.encode(recruteur.getPass()));
+		recruteur.setDateRecrutement(new Date());
+		//recruteur.setRole(roleService.findById(1));
+		System.out.println(recruteur);
+		return userRepository.save(recruteur);
+	}
+
+	@Override
+	public List<Recruteur> getListRecruteur() {
+		return recruteurRepository.findAll();
+	}
+
+	@Override
+	public Recruteur editRecruteur(Recruteur recruteur) {
+		return userRepository.save(recruteur);
+	}
+
+	@Override
+	public Candidat addCandidat(Candidat candidat) {
+		candidat.setPass(bCryptPasswordEncoder.encode(candidat.getPass()));
+		candidat.setDateInscription(new Date());
+		return userRepository.save(candidat);
 	}
 
 	

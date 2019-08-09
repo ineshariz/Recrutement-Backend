@@ -9,4 +9,6 @@ public interface QuestionService {
 	List<Question> getAll();
 	List<Question> getAllActivated();
 	Optional<Question> find(int id);
+	List<Question> getAllByQuizId(int id);
+	void delete(int id);
 }
