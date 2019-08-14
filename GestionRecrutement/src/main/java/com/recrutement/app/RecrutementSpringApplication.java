@@ -38,8 +38,8 @@ public class RecrutementSpringApplication implements CommandLineRunner {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext=SpringApplication.run(RecrutementSpringApplication.class, args);
-		/*
 		
+		/*
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		
 		us=(UserService)applicationContext.getBean("userService");

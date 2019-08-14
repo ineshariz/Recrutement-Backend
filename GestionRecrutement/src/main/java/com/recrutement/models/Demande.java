@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -33,12 +34,16 @@ public class Demande {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "candidat_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-	private User candidat;
+	private Candidat candidat;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "offre_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private Offre offre;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "choixdate_id")
+    private ChoixDateEntretien choixDate;
 	
 	public int getId() {
 		return id;
@@ -72,11 +77,11 @@ public class Demande {
 		this.etat = etat;
 	}
 
-	public User getCandidat() {
+	public Candidat getCandidat() {
 		return candidat;
 	}
 
-	public void setCandidat(User candidat) {
+	public void setCandidat(Candidat candidat) {
 		this.candidat = candidat;
 	}
 
@@ -87,5 +92,14 @@ public class Demande {
 	public void setOffre(Offre offre) {
 		this.offre = offre;
 	}
+
+	public ChoixDateEntretien getChoixDate() {
+		return choixDate;
+	}
+
+	public void setChoixDate(ChoixDateEntretien choixDate) {
+		this.choixDate = choixDate;
+	}
+	
 	
 }

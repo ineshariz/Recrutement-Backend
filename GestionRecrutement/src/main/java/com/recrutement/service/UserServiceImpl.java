@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -17,11 +20,13 @@ import com.recrutement.dao.RecruteurRepository;
 import com.recrutement.dao.UserRepository;
 import com.recrutement.models.Candidat;
 import com.recrutement.models.Recruteur;
+import com.recrutement.models.Offre;
 import com.recrutement.models.User;
 
 @Service(value= "userService")
 public class UserServiceImpl implements UserService, UserDetailsService{
-	
+	@PersistenceContext()
+	EntityManager em ;
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -136,8 +141,14 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	        javaMailSender.send(msg);
 			return false;
 		}
+	}
 		
-		
+	public List<Number> nombreCandidat(Offre offre) {
+				Query query = em.createQuery("SELECT COUNT(a.id) FROM Demande a  WHERE a.offre.id ="+offre.getId());
+		        System.out.println(query.toString());       
+				return  query.getResultList();
+
+	
 	}
 
 	

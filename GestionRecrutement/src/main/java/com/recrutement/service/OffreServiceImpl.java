@@ -15,20 +15,18 @@ public class OffreServiceImpl implements OffreService {
 
 	@Override
 	public Offre add(Offre offre) {
-		// TODO Auto-generated method stub
-		return null;
+		offreRepository.save(offre)	;
+    return offre;
 	}
 
 	@Override
 	public List<Offre> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return offreRepository.findAll();
+}
 
 	@Override
 	public Offre find(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		 return offreRepository.getOne(id);
 	}
 
 	@Override

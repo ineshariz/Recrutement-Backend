@@ -8,5 +8,6 @@ public interface OffreService {
 	Offre add(Offre offre);
 	List<Offre> getAll();
 	Offre find(int id);
-	Offre edit(Offre offre);
+	Offre edit(Offre offre); 
+	
 }

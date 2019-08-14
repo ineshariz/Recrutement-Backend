@@ -19,6 +19,8 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Entretien {
 
@@ -26,7 +28,7 @@ public class Entretien {
 	@Column
 	@GeneratedValue(strategy=GenerationType.AUTO) 
 	private int id;
-	
+
 	@Column
 	private Date date;
 	
