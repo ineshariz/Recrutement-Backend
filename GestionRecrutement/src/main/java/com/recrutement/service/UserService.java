@@ -24,7 +24,12 @@ public interface UserService {
 	void deleteUser(Integer id);
 
 	 User findById(Integer id);
+	 
+	 Recruteur findRecruteurById(Integer id);
 	 	 
 	 Optional<User> findByEmail(String nomPrenom);
 	 
+	 Optional<Recruteur> findRecruteurByEmail(String email);
+	 
+	 boolean changePwd(int userId, String oldPwd, String newPwd);
 }

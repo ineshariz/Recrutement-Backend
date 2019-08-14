@@ -31,6 +31,16 @@ public class UserController {
     public Optional<User> findbyEmail(@PathVariable String email) {
 		return userService.findByEmail(email);  
 	}
+	
+	@RequestMapping(value="/pwd/{id}/{oldpwd}/{newpwd}",method=RequestMethod.GET)
+    public boolean changePwd(@PathVariable int id, @PathVariable String oldpwd,@PathVariable String newpwd) {
+		return userService.changePwd(id, oldpwd, newpwd);  
+	}
+	
+	@RequestMapping(value="/recruteur/{email}",method=RequestMethod.GET)
+    public Optional<Recruteur> findRecruteurbyEmail(@PathVariable String email) {
+		return userService.findRecruteurByEmail(email);  
+	}
 
 	@RequestMapping(value="/recruteurs",method=RequestMethod.POST, produces = "application/json")
 	public Recruteur addRecruteur(@RequestBody Recruteur recruteur) {

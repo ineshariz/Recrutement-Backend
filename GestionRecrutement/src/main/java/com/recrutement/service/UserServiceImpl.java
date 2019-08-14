@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,6 +24,9 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+    private JavaMailSender javaMailSender;
 	
 	@Autowired
 	private RecruteurRepository recruteurRepository;
@@ -101,6 +106,38 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		candidat.setPass(bCryptPasswordEncoder.encode(candidat.getPass()));
 		candidat.setDateInscription(new Date());
 		return userRepository.save(candidat);
+	}
+
+	@Override
+	public Optional<Recruteur> findRecruteurByEmail(String email) {
+		Optional<Recruteur> findUser = recruteurRepository.findByEmail(email);
+		return findUser;
+	}
+
+	@Override
+	public Recruteur findRecruteurById(Integer id) {
+		return recruteurRepository.getOne(id);
+	}
+
+	@Override
+	public boolean changePwd(int userId, String oldPwd, String newPwd) {
+		User user= userRepository.getOne(userId);
+		SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(user.getEmail());
+        msg.setSubject("Alert de sécurité");		
+        if (bCryptPasswordEncoder.matches(oldPwd, user.getPass())){
+			user.setPass(bCryptPasswordEncoder.encode(newPwd));
+			msg.setText("Votre mot de passe a été changé");
+	        javaMailSender.send(msg);
+			userRepository.save(user);  
+			return true;
+		}else{
+			msg.setText("Votre mot de passe nnnnn");
+	        javaMailSender.send(msg);
+			return false;
+		}
+		
+		
 	}
 
 	
