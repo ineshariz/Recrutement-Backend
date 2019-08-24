@@ -1,4 +1,3 @@
-/*
 package com.recrutement.service;
 
 import java.util.List;
@@ -39,7 +38,5 @@ public class EntretienServiceImpl implements EntretienService {
 	}
 	
 }
-
-*/
 
 

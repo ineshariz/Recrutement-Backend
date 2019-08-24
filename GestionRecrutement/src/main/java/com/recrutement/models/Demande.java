@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -42,11 +41,11 @@ public class Demande {
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private Offre offre;
 	
-	/*
+	
 	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "choixdate_id")
     private ChoixDateEntretien choixDate;
-	*/
+	
 	
 	@Column
 	private Date dateEntretien;
@@ -102,20 +101,18 @@ public class Demande {
 		this.offre = offre;
 	}
 
-	/*
+	
 	public ChoixDateEntretien getChoixDate() {
 		return choixDate;
-=======
+	}
+	
 	public Date getDateEntretien() {
 		return dateEntretien;
->>>>>>> branch 'wolf' of https://github.com/ineshariz/Recrutement-Backend
 	}
 
 	public void setDateEntretien(Date dateEntretien) {
 		this.dateEntretien = dateEntretien;
 	}
-<<<<<<< HEAD
-	*/
 
 	public ResultatQuiz getResultatQuiz() {
 		return resultatQuiz;
