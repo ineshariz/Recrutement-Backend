@@ -1,5 +1,6 @@
 package com.recrutement.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -28,8 +30,9 @@ public class ResultatQuiz {
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private Quiz quiz;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "demande_id", nullable = false)
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "demande_id", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private Demande demande;
 	

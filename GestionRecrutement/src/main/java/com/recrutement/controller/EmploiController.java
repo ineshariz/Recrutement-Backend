@@ -21,14 +21,19 @@ public class EmploiController {
 	@Autowired
 	private OffreService offreservice;
 
+	@RequestMapping(value="/disponible",method=RequestMethod.GET)
+	public List<Offre> getListOffreDisponible(){
+		return offreservice.getAllFiltred();
+	}
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Offre> getListOffre(){
 		return offreservice.getAll();
 	}
 	
+
 	@RequestMapping(value="/",method=RequestMethod.POST)
 	public Offre addOffre(@RequestBody Offre offre) {
-		
 		offreservice.add(offre);
 		return offre;
 	}
@@ -39,7 +44,10 @@ public class EmploiController {
        
     }
 
-	
+	@RequestMapping(value="/update",method=RequestMethod.PUT)
+   	public Offre update(@RequestBody Offre offre) {
+		return offreservice.edit(offre);
+   }
 	/*
 	@RequestMapping(value="/update",method=RequestMethod.PUT)
    	public Pole update(@RequestBody Pole pole) {

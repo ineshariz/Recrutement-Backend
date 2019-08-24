@@ -40,16 +40,22 @@ public class User {
 	@Column
 	private String photo;
 	
+	@Column
+	private boolean etat;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
     private Role role;
+	
+	@Column
+	private String resetToken;
 	
 	public User() {
 
 	}
 
 	public User(int id, String nom, String pass, String email, Date dateNaissance, String cv, 
-			Role role, String photo) {
+			Role role, String photo, boolean etat) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -58,6 +64,7 @@ public class User {
 		this.dateNaissance = dateNaissance;
 		this.role = role;
 		this.photo = photo;
+		this.etat = etat;
 	}
 
 
@@ -125,7 +132,23 @@ public class User {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}	
+	}
 
+	public boolean isEtat() {
+		return etat;
+	}
+
+	public void setEtat(boolean etat) {
+		this.etat = etat;
+	}
+
+	public String getResetToken() {
+		return resetToken;
+	}
+
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
+	}	
+	
 	
 }
