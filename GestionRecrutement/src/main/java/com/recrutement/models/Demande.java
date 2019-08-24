@@ -41,9 +41,11 @@ public class Demande {
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private Offre offre;
 	
+	/*
 	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "choixdate_id")
     private ChoixDateEntretien choixDate;
+	*/
 	
 	public int getId() {
 		return id;
@@ -93,6 +95,7 @@ public class Demande {
 		this.offre = offre;
 	}
 
+	/*
 	public ChoixDateEntretien getChoixDate() {
 		return choixDate;
 	}
@@ -100,6 +103,6 @@ public class Demande {
 	public void setChoixDate(ChoixDateEntretien choixDate) {
 		this.choixDate = choixDate;
 	}
-	
+	*/
 	
 }
