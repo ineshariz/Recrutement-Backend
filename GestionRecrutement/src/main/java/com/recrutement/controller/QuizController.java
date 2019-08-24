@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.recrutement.models.Demande;
 import com.recrutement.models.Question;
 import com.recrutement.models.Quiz;
 import com.recrutement.models.Reponse;
+import com.recrutement.models.ResultatQuiz;
+import com.recrutement.service.PostuleService;
 import com.recrutement.service.QuestionService;
 import com.recrutement.service.QuizService;
 import com.recrutement.service.ReponseService;
+import com.recrutement.service.ResultatQuizService;
 
 @Controller
 @RestController
@@ -24,6 +29,12 @@ public class QuizController {
 
 	@Autowired
 	QuizService quizService;
+	
+	@Autowired
+	PostuleService postuleService;
+	
+	@Autowired
+	ResultatQuizService resultatQuizService;
 	
 	@Autowired
 	QuestionService questionService;
@@ -49,6 +60,38 @@ public class QuizController {
 	@RequestMapping(value="/question", method=RequestMethod.POST)
 	public Question addQuestionToQuiz(@RequestBody Question question){
 		return questionService.commit(question);
+	}
+	
+	@RequestMapping(value="/reponseQuiz/{demandeId}", method=RequestMethod.POST)
+	public void reponseQuiz(@PathVariable int demandeId, @RequestBody Quiz submittedResult){
+		System.out.println("hey "+submittedResult.getId());
+		Demande demande= postuleService.find(demandeId);
+		Quiz quizDB= quizService.find(submittedResult.getId()).get();
+		int totalV=0;
+		int point = 0;
+		for (Question q : submittedResult.getQuestions()) {
+			Question questionDB= questionService.find(q.getId()).get();
+			totalV=totalV+questionDB.getValeur();
+			int countDB=0;
+			int count=0;
+			for (Reponse r : questionDB.getReponses()) {
+				Reponse reponseDB= reponseService.find(r.getId()).get();
+				if (reponseDB.isValidate()==true)
+					countDB++;
+			}
+			for (Reponse r : q.getReponses()) {
+				Reponse reponseDB= reponseService.find(r.getId()).get();
+				if (reponseDB.isValidate()==true)
+					count++;	
+			}
+			if (count==countDB)
+				point=point+questionDB.getValeur();
+		}
+		ResultatQuiz resultatQuiz= new ResultatQuiz();
+		resultatQuiz.setQuiz(quizDB);
+		resultatQuiz.setResultat((point*100)/totalV);
+		resultatQuiz.setDemande(demande);
+		resultatQuizService.commit(resultatQuiz);
 	}
 	
 	@RequestMapping(value="/question/{id}", method=RequestMethod.DELETE)

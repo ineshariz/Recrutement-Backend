@@ -23,25 +23,21 @@ public class StorageService {
 	*/
 	
 	//Logger log = LoggerFactory.getLogger(this.getClass().getName());
-	private final Path rootLocation = Paths.get("C:/uploads");
+	private final Path rootLocation = Paths.get("C:/Users/ichrak/Documents/Stage d'été Cynapsys 2019/adminTemplate/src/assets/Uploads");
 
 	public void store(MultipartFile file) {
 		try {
-			System.out.println("test1");
 			Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
 		} catch (Exception e) {
-			System.out.println("test2");
 			throw new RuntimeException("FAIL!");
 		}
 	}
 
 	public Resource loadFile(String filename) {
 		try {
-			System.out.println("test3");
 			Path file = rootLocation.resolve(filename);
 			Resource resource = new UrlResource(file.toUri());
 			if (resource.exists() || resource.isReadable()) {
-				System.out.println("test4");
 				return resource;
 			} else {
 				throw new RuntimeException("FAIL!");
@@ -57,7 +53,6 @@ public class StorageService {
 
 	public void init() {
 		try {
-			System.out.println("test5s");
 			Files.createDirectory(rootLocation);
 		} catch (IOException e) {
 			throw new RuntimeException("Could not initialize storage!");

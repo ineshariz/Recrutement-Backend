@@ -45,8 +45,6 @@ public class UserController {
 
 	@RequestMapping(value="/id/{id}",method=RequestMethod.GET)
     public User findbyId(@PathVariable Integer id) {
-		System.out.println("test");
-		System.out.println(id);
 		return userService.findById(id);  
 	}
 	
@@ -67,7 +65,6 @@ public class UserController {
 
 	@RequestMapping(value="/nombrecandidat",method=RequestMethod.GET)
     public List<Number> nombrecandidat(@PathVariable Offre offre) {
-		System.out.println("test");
 		return userService.nombreCandidat(offre);  
 	}
 }

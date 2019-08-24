@@ -12,4 +12,5 @@ public interface PostuleService {
 	Demande find(int id);
 	List<Demande> getDemandeParCandidat(int id);
 	Demande getDemandeParCandidatoffre(int id,int id1);
+	boolean checkDemandeExistByAnOffer(int offreId, int userID);
 }

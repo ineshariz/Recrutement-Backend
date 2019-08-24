@@ -47,6 +47,9 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 	
+	@Column
+	private String resetToken;
+	
 	public User() {
 
 	}
@@ -137,6 +140,15 @@ public class User {
 
 	public void setEtat(boolean etat) {
 		this.etat = etat;
+	}
+
+	public String getResetToken() {
+		return resetToken;
+	}
+
+	public void setResetToken(String resetToken) {
+		this.resetToken = resetToken;
 	}	
+	
 	
 }

@@ -11,11 +11,13 @@ import com.recrutement.models.Entretien;
 @Service(value= "entretienService")
 
 public class EntretienServiceImpl implements EntretienService {
+	
 	@Autowired
 	private ChoixDateRepository choidateRepo;
+	
 	@Autowired
-
 	private EntretienRepository entretienrepo;
+	
 	@Override
 	public ChoixDateEntretien add(ChoixDateEntretien choixdate) {
 		choidateRepo.save(choixdate);
@@ -24,9 +26,9 @@ public class EntretienServiceImpl implements EntretienService {
 	
 	@Override
 	public ChoixDateEntretien get(int id) {
-		return choidateRepo.findAll().stream().filter(x -> x.getDemande().getId()==id)
+		return choidateRepo.findAll().stream()
+				.filter(x -> x.getDemande().getId()==id)
 				.findFirst().get();
-
 	}
 	
 	@Override

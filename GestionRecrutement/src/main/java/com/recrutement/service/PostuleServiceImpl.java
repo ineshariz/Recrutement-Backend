@@ -21,8 +21,8 @@ public class PostuleServiceImpl implements PostuleService {
 
 	@Override
 	public Demande add(Demande demande) {
-	demandeRepo.save(demande);
-	return demande;
+		demandeRepo.save(demande);
+		return demande;
 	}
 
 	@Override
@@ -55,7 +55,14 @@ public class PostuleServiceImpl implements PostuleService {
 				.filter(demande -> demande.getCandidat().getId()==id && demande.getOffre().getId()==id1).findFirst().get();
 	}
 
+	@Override
+	public boolean checkDemandeExistByAnOffer(int offreId, int userId) {
+		for (Demande demande : demandeRepo.findAll()) {
+			if(demande.getOffre().getId()==offreId && demande.getCandidat().getId()==userId)
+				return true;
+		}
+		return false;
+	}
 
 	
-
 }

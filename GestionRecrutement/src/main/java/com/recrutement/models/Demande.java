@@ -36,14 +36,17 @@ public class Demande {
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private Candidat candidat;
 	
+	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "offre_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private Offre offre;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "choixdate_id")
-    private ChoixDateEntretien choixDate;
+	@Column
+	private Date dateEntretien;
+	
+	@OneToOne(mappedBy = "demande")
+    private ResultatQuiz resultatQuiz;
 	
 	public int getId() {
 		return id;
@@ -93,13 +96,21 @@ public class Demande {
 		this.offre = offre;
 	}
 
-	public ChoixDateEntretien getChoixDate() {
-		return choixDate;
+	public Date getDateEntretien() {
+		return dateEntretien;
 	}
 
-	public void setChoixDate(ChoixDateEntretien choixDate) {
-		this.choixDate = choixDate;
+	public void setDateEntretien(Date dateEntretien) {
+		this.dateEntretien = dateEntretien;
 	}
-	
+
+	public ResultatQuiz getResultatQuiz() {
+		return resultatQuiz;
+	}
+
+	public void setResultatQuiz(ResultatQuiz resultatQuiz) {
+		this.resultatQuiz = resultatQuiz;
+	}
+
 	
 }

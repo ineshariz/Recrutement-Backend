@@ -35,4 +35,8 @@ public interface UserService {
 	 boolean changePwd(int userId, String oldPwd, String newPwd);
 	 
 	 List<Number>nombreCandidat(Offre offre);
+	 
+	 boolean requestPwd(String email);
+	 
+	 public Optional<User> findUserByResetToken(String resetToken);
 }

@@ -1,6 +1,8 @@
 package com.recrutement.models;
 
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -16,7 +19,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity(name = "offre")
 @Table(name = "offre")
-public class Offre {
+public class Offre  {
 
 	@Id
 	@Column
@@ -32,7 +35,8 @@ public class Offre {
 	@Column
 	private String departement;
 	
-	@Column
+	@Column(length = 100000)
+	@Lob
 	private String description;
 	
 	@Column
@@ -40,11 +44,25 @@ public class Offre {
 	
 	@Column
 	private String etat;
+	
+	@Column
+	private String ville;
+	
+	@Column
+	private Date dateAjout;
+	
+	@Column
+	private Date dateDebut;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "recruteur_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 	private User recruteur;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "quiz_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+	private Quiz quiz;
 	
 	public int getId() {
 		return id;
@@ -113,5 +131,39 @@ public class Offre {
 	public void setRecruteur(User recruteur) {
 		this.recruteur = recruteur;
 	}
+
+	public Quiz getQuiz() {
+		return quiz;
+	}
+
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public Date getDateAjout() {
+		return dateAjout;
+	}
+
+	public void setDateAjout(Date dateAjout) {
+		this.dateAjout = dateAjout;
+	}
+
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	
 	
 }

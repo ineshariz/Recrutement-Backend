@@ -69,6 +69,11 @@ public class AuthenticationController {
 		return ResponseEntity.ok(new AuthToken(token)); 
 	}
     
+    @RequestMapping(value="/requestpwd/{email}", method = RequestMethod.GET)
+    public boolean requestPwd(@PathVariable String email) {
+    	return  userService.requestPwd(email);
+	}
+    
     
     @RequestMapping(value="/check", method = RequestMethod.GET)
     public ResponseEntity test() {

@@ -41,7 +41,6 @@ public class UploadController {
 		try {
 			storageService.store(file);
 			files.add(file.getOriginalFilename());
-
 			message = "You successfully uploaded " + file.getOriginalFilename() + "!";
 			return ResponseEntity.status(HttpStatus.OK).body(message);
 		} catch (Exception e) {
