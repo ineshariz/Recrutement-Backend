@@ -23,7 +23,7 @@ public class StorageService {
 	*/
 	
 	//Logger log = LoggerFactory.getLogger(this.getClass().getName());
-	private final Path rootLocation = Paths.get("C:/uploads");
+	private final Path rootLocation = Paths.get("C:/Users/dell/WebstormProjects/Recrutement-Frontend/src/assets/UploadCv");
 
 	public void store(MultipartFile file) {
 		try {

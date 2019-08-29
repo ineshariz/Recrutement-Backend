@@ -14,7 +14,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.recrutement.dao.CandidatRepository;
 import com.recrutement.dao.UserRepository;
+import com.recrutement.models.Candidat;
 import com.recrutement.models.Offre;
 import com.recrutement.models.User;
 
@@ -24,7 +27,8 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	EntityManager em ;
 	@Autowired
 	private UserRepository userRepository;
-
+	@Autowired
+	private CandidatRepository candidatRepo;
 	@Override
 	public User addUser(User user) {
 		return userRepository.save(user);
@@ -38,8 +42,8 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	
 
 	@Override
-	public User findById(Integer id) {
-	    return userRepository.getOne(id);
+	public Candidat findById(Integer id) {
+	    return candidatRepo.getOne(id);
 	}
 
 	@Override
@@ -79,6 +83,22 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 				return  query.getResultList();
 
 	
+	}
+
+	@Override
+	public Candidat edit(Candidat ca) {
+		candidatRepo.save(ca);
+		return ca;
+	}
+
+	@Override
+	public List<Candidat> getListCandidat() {
+		return candidatRepo.findAll();
+	}
+
+	@Override
+	public User findUserById(Integer id) {
+		return userRepository.getOne(id);
 	}
 
 	

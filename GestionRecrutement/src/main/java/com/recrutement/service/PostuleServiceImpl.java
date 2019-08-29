@@ -55,7 +55,7 @@ public class PostuleServiceImpl implements PostuleService {
 				.filter(demande -> demande.getCandidat().getId()==id && demande.getOffre().getId()==id1).findFirst().get();
 	}
 
-
+	
 	
 
 }

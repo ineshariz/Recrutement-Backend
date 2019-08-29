@@ -15,6 +15,8 @@ public class Notif {
 	
 	@Column
 	private String message;
+	@Column
+	private boolean etat;
 
 	public int getId() {
 		return id;
@@ -30,6 +32,14 @@ public class Notif {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public boolean isEtat() {
+		return etat;
+	}
+
+	public void setEtat(boolean etat) {
+		this.etat = etat;
 	}
 	
 	

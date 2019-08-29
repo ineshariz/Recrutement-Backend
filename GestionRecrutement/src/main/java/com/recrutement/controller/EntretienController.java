@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.recrutement.models.ChoixDateEntretien;
+import com.recrutement.models.Choixdate;
+import com.recrutement.models.Demande;
 import com.recrutement.models.Entretien;
 import com.recrutement.models.Offre;
 import com.recrutement.service.EntretienService;
@@ -40,11 +42,21 @@ public class EntretienController {
 	}
 	@RequestMapping(value="/",method=RequestMethod.POST)
 	public Entretien chosirDateEntretien(@RequestBody Entretien entretien) {
-		System.out.println(entretien.getDate());
-		SimpleDateFormat ft = new SimpleDateFormat("YYYY-MM-dd hh:mm:ssa", Locale.US);
-	//	java.util.Date t=ft.parse(entretien.getDate());
-		ft.applyPattern("MM.dd");
 		Es.addEntretien(entretien);
 		return entretien;
 	}
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public List<ChoixDateEntretien> getListDate(){
+		return Es.getAll();
+	}
+	@RequestMapping(value="/list",method=RequestMethod.GET)
+	public List<Entretien> getListEntretien(){
+		return Es.getAllEntretien();
+	}
+	@RequestMapping(value="/effectue",method=RequestMethod.PUT)
+   	public Entretien accepte(@RequestBody Entretien entretien) {
+		entretien.setEtat("Entretien effectué");
+		return Es.addEntretien(entretien);
+   }
+	
 }

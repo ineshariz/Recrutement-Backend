@@ -38,12 +38,8 @@ public class CandidatController {
 		 return offreservice.find(id);
        
     }
-	/*
-	@RequestMapping(value="/update",method=RequestMethod.PUT)
-   	public Pole update(@RequestBody Pole pole) {
-		return poleService.addPole(pole);
-   }
 	
+	/*
 	
    @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
    public void delete(@PathVariable Integer id) {

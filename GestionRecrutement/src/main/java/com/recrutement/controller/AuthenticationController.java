@@ -51,6 +51,7 @@ public class AuthenticationController {
         final Optional<User> user = userService.findByEmail(loginUser.getUsername());
         System.out.println("user role is: "+user.get().getRole().getRole());
         final String token = jwtTokenUtil.generateToken(user.get());
+        System.out.println("user id :"+user.get().getId());
         System.out.println(token);
         return ResponseEntity.ok(new AuthToken(token));
     }

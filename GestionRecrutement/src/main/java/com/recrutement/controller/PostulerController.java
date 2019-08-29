@@ -1,5 +1,7 @@
 package com.recrutement.controller;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ private PostuleService ps;
 	
 	@RequestMapping(value="/",method=RequestMethod.POST)
 	public Demande addOffre(@RequestBody Demande demande) {	
+		LocalDate localDate = LocalDate.now();
+		
 	ps.add(demande);
 	return demande;
 	}
@@ -34,6 +38,10 @@ private PostuleService ps;
 	public List<Demande>getDemandeParOffres(@PathVariable int id){
 		return ps.getDemandeParOffre(id);
 	}
+	/*@RequestMapping(value="get/{id}", method=RequestMethod.GET)
+	public List<Demande>getDemande(@PathVariable int id){
+		return ps.getDemande(id);
+	}*/
 	
 	@RequestMapping(value="/accepte",method=RequestMethod.PUT)
    	public Demande accepte(@RequestBody Demande demande) {
@@ -43,6 +51,10 @@ private PostuleService ps;
 	@RequestMapping(value="/refuser",method=RequestMethod.PUT)
    	public Demande refuser(@RequestBody Demande demande) {
 			demande.setEtat("refusé");
+		return ps.add(demande);
+   }
+	@RequestMapping(value="/date",method=RequestMethod.PUT)
+   	public Demande dateentreitien(@RequestBody Demande demande) {
 		return ps.add(demande);
    }
 	@RequestMapping(value="/entretien/{id}",method=RequestMethod.GET)
