@@ -43,8 +43,12 @@ public class OffreServiceImpl implements OffreService {
 
 	@Override
 	public Offre edit(Offre offre) {
-		// TODO Auto-generated method stub
-		return null;
+		return offreRepository.save(offre)	;
+	}
+
+	@Override
+	public void delete(int id) {
+		 offreRepository.deleteById(id);;
 	}
 	
 	

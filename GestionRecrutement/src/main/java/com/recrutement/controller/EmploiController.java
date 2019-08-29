@@ -3,6 +3,7 @@ package com.recrutement.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,9 +45,15 @@ public class EmploiController {
        
     }
 
-	@RequestMapping(value="/update",method=RequestMethod.PUT)
+	@RequestMapping(value="/",method=RequestMethod.PUT)
    	public Offre update(@RequestBody Offre offre) {
 		return offreservice.edit(offre);
+   }
+	
+	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
+   	public ResponseEntity<?> delete(@PathVariable Integer id) {
+		 offreservice.delete(id);
+		 return ResponseEntity.ok("deleted");
    }
 	/*
 	@RequestMapping(value="/update",method=RequestMethod.PUT)

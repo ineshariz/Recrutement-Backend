@@ -88,5 +88,11 @@ public class AuthenticationController {
     	return userService.getListUser();
     	
     }
+    
+    @RequestMapping(value="mailunique/{email}", method = RequestMethod.GET)
+    public boolean mailUnique(@PathVariable String email) {
+    	return userService.mailExist(email);
+    }
+    
 
 }

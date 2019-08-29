@@ -11,16 +11,18 @@ C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\rec
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\AuthenticationController.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\dao\QuizRepository.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\LoginUser.java
-C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\CandidatController.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\UploadController.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\ChoixDateEntretien.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\app\RecrutementSpringApplication.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\MailServiceImp.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\ResultatQuizService.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Entretien.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Recruteur.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\PasswordController.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\UserController.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\conf\JwtTokenUtil.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\ResultatQuiz.java
-C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Notif.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\ResultatQuizImp.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\EmploiController.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Reponse.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\QuizService.java
@@ -35,6 +37,7 @@ C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\rec
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Offre.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\conf\JwtAuthenticationFilter.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\QuizController.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\MailService.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\RoleService.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\conf\JwtAuthenticationEntryPoint.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\PostulerController.java
@@ -51,6 +54,6 @@ C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\rec
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\ReponseServiceImp.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\ReponseService.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\models\Role.java
+C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\dao\ResultatQuizRepository.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\service\EntretienService.java
-C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\controller\EntretienController.java
 C:\Users\ichrak\git\Recrutement-Backend\GestionRecrutement\src\main\java\com\recrutement\conf\WebSecurityConfig.java

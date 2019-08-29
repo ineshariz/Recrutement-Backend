@@ -9,6 +9,7 @@ public interface OffreService {
 	List<Offre> getAll();
 	Offre find(int id);
 	Offre edit(Offre offre);
+	void delete(int id);
 	List<Offre> getAllFiltred(); 
 	
 }
