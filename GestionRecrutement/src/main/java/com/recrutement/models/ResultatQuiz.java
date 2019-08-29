@@ -14,6 +14,8 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class ResultatQuiz {
 
@@ -34,6 +36,7 @@ public class ResultatQuiz {
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "demande_id", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonBackReference
 	private Demande demande;
 	
 	public int getId() {

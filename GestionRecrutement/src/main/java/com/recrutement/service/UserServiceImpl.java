@@ -206,5 +206,11 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		return userRepository.findByResetToken(resetToken);
 	}
 
+	@Override
+	public Boolean mailExist(String mail) {
+		return userRepository.findByEmail(mail).isPresent();
+		
+	}
+
 	
 }

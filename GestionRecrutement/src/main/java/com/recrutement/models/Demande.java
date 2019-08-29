@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Demande {
 
@@ -51,6 +53,7 @@ public class Demande {
 	private Date dateEntretien;
 	
 	@OneToOne(mappedBy = "demande")
+	@JsonManagedReference
     private ResultatQuiz resultatQuiz;
 	
 	public int getId() {

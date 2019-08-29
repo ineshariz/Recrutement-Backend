@@ -47,6 +47,21 @@ public class QuizController {
 		return quizService.getAll();
 	}
 	
+	@RequestMapping(value="/activated", method=RequestMethod.GET)
+	public List<Quiz> getListQuizActivated(){
+		return quizService.getAllActivated();
+	}
+	
+	@RequestMapping(value="/enable", method=RequestMethod.PUT)
+	public Quiz enableQuiz(@RequestBody Quiz quiz){
+		return quizService.enable(quiz);
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT)
+	public Quiz updateQuiz(@RequestBody Quiz quiz){
+		return quizService.commit(quiz);
+	}
+	
 	@RequestMapping(value="/",method=RequestMethod.POST, produces = "application/json")
 	public Quiz addQuiz(@RequestBody Quiz quiz) {
 		return quizService.commit(quiz);
@@ -96,7 +111,9 @@ public class QuizController {
 	
 	@RequestMapping(value="/question/{id}", method=RequestMethod.DELETE)
 	public void deleteQuestion(@PathVariable int id){
+		Question question= questionService.find(id).get();
 		questionService.delete(id);
+		quizService.enable(question.getQuiz());
 	}
 	
 	@RequestMapping(value="/{id}/question/{id}/reponse", method=RequestMethod.GET)

@@ -12,6 +12,8 @@ public interface UserService {
 	
 	User addUser(User user);
 	
+	Boolean mailExist(String mail);
+	
 	Recruteur addRecruteur (Recruteur recruteur);
 	
 	Candidat addCandidat (Candidat candidat);

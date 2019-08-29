@@ -47,6 +47,7 @@ public class PasswordController {
 		Optional<User> user = userService.findUserByResetToken(params.get(0));
 		if (user.isPresent()) {
 			User resetUser = user.get(); 
+			resetUser.setEtat(true);
             resetUser.setPass(bCryptPasswordEncoder.encode(params.get(1)));
             resetUser.setResetToken(null);
             userService.addUser(resetUser);
