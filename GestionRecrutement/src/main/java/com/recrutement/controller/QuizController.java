@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.recrutement.models.Demande;
 import com.recrutement.models.Question;
 import com.recrutement.models.Quiz;
@@ -121,9 +120,5 @@ public class QuizController {
 		return reponseService.getAll();
 	}
 	
-	/*@RequestMapping(value="/reponse", method=RequestMethod.POST)
-	public Reponse addReponseToQuestion(@RequestBody Reponse reponse){
-		return reponseService.commit(reponse);
-	}*/
 	
 }

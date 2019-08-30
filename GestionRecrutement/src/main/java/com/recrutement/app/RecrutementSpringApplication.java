@@ -39,38 +39,38 @@ public class RecrutementSpringApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		ApplicationContext applicationContext=SpringApplication.run(RecrutementSpringApplication.class, args);
 		
-		/*
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		
 		us=(UserService)applicationContext.getBean("userService");
 		rs=(RoleService)applicationContext.getBean("roleService");
+		/*
 		Candidat c = new  Candidat();
 		c.setDateNaissance(new Date());
-		c.setEmail("c1");
-		c.setNom("candi");
-		c.setPrenom("c");
+		c.setEmail("c2");
+		c.setNom("fake");
+		c.setPrenom("user");
 		c.setRole(rs.findById(3));
 		c.setPass(bCryptPasswordEncoder.encode("123"));
 		c.setPhoto("cool");
 		c.setDateInscription(new Date());
 		c.setCv("test");
-		
-		
+		us.addUser(c);
+		*/
+		/*
 		Recruteur r = new Recruteur();
 		r.setDateNaissance(new Date());
-		r.setEmail("r1");
+		r.setEmail("r4");
 		r.setNom("recrut");
 		r.setPrenom("c");
-		r.setRole(rs.findById(1));
+		r.setRole(rs.findById(2));
 		r.setPass(bCryptPasswordEncoder.encode("123"));
 		r.setPhoto("cool");
 		r.setDepartement("mobile");
 		r.setDateRecrutement(new Date());
 		
 		
-		us.addUser(c);
 		us.addUser(r);
-		*/
+		
+	*/
 				
 	}
 

@@ -3,10 +3,8 @@ package com.recrutement.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.recrutement.dao.RoleRepository;
 import com.recrutement.models.Role;
-
 
 @Service(value= "roleService")
 public class RoleServiceImpl implements RoleService {
@@ -21,8 +19,7 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Override
 	public Role findById(Integer id) {
-	    return roleRepository.getOne(id);
-	    
+	    return roleRepository.getOne(id);    
 	}
 
 	

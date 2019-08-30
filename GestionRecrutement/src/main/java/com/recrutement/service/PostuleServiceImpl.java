@@ -5,9 +5,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.recrutement.dao.DemandeRepository;
-//import com.recrutement.models.ChoixDateEntretien;
 import com.recrutement.models.Demande;
-import com.recrutement.models.Offre;
 
 @Service(value= "postuleService")
 
@@ -33,13 +31,14 @@ public class PostuleServiceImpl implements PostuleService {
 		return demandeRepo.findAll().stream()               
 				.filter(demande -> demande.getOffre().getId()==id)
 				.collect(Collectors.toList());
-		}
+	}
+	
 	@Override
 	public List<Demande> getDemandeParCandidat(int id) {
 		return demandeRepo.findAll().stream()               
 				.filter(demande -> demande.getCandidat().getId()==id)
 				.collect(Collectors.toList());
-		}
+	}
 
 	@Override
 	public Demande find(int id) {
@@ -53,6 +52,7 @@ public class PostuleServiceImpl implements PostuleService {
 				.filter(demande -> demande.getCandidat().getId()==id && demande.getOffre().getId()==id1).findFirst().get();
 	}
 
+
 	@Override
 	public boolean checkDemandeExistByAnOffer(int offreId, int userId) {
 		for (Demande demande : demandeRepo.findAll()) {
@@ -62,5 +62,6 @@ public class PostuleServiceImpl implements PostuleService {
 		return false;
 	}
 
+	
 	
 }

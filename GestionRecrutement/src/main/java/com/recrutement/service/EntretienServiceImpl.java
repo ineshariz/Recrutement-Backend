@@ -13,21 +13,20 @@ import com.recrutement.models.Entretien;
 public class EntretienServiceImpl implements EntretienService {
 	
 	@Autowired
-	private ChoixDateRepository choidateRepo;
+	private ChoixDateRepository choidateRepository;
 	
 	@Autowired
 	private EntretienRepository entretienrepo;
 	
 	@Override
 	public ChoixDateEntretien add(ChoixDateEntretien choixdate) {
-		choidateRepo.save(choixdate);
+		choidateRepository.save(choixdate);
 		return choixdate;
 	}
 	
 	@Override
 	public ChoixDateEntretien get(int id) {
-		return choidateRepo.findAll().stream()
-				.filter(x -> x.getDemande().getId()==id)
+		return choidateRepository.findAll().stream().filter(x -> x.getDemande().getId()==id)
 				.findFirst().get();
 	}
 	
@@ -37,6 +36,21 @@ public class EntretienServiceImpl implements EntretienService {
 		return entretien;
 	}
 	
+	@Override
+	public List<ChoixDateEntretien> getAll() {
+		return choidateRepository.findAll();
+	}
+	
+	@Override
+	public List<Entretien> getAllEntretien() {
+		return entretienrepo.findAll();
+	}
+	
 }
+
+	
+	
+
+	
 
 

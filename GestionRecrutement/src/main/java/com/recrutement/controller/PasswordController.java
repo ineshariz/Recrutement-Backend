@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.recrutement.models.User;
-import com.recrutement.service.MailService;
 import com.recrutement.service.UserService;
-
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

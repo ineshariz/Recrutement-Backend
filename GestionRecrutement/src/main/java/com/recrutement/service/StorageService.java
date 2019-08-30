@@ -1,13 +1,10 @@
 package com.recrutement.service;
 
-import org.springframework.beans.factory.annotation.Value;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -24,6 +21,7 @@ public class StorageService {
 	
 	//Logger log = LoggerFactory.getLogger(this.getClass().getName());
 	private final Path rootLocation = Paths.get("C:/Users/ichrak/Documents/Stage d'été Cynapsys 2019/adminTemplate/src/assets/Uploads");
+	//private final Path rootLocation = Paths.get("C:/Users/dell/WebstormProjects/Recrutement-Frontend/src/assets/UploadCv");
 
 	public void store(MultipartFile file) {
 		try {

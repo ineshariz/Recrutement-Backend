@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -18,12 +17,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.recrutement.conf.JwtTokenUtil;
 import com.recrutement.dao.RecruteurRepository;
 import com.recrutement.dao.UserRepository;
 import com.recrutement.models.Candidat;
 import com.recrutement.models.Recruteur;
+import com.recrutement.dao.CandidatRepository;
 import com.recrutement.models.Offre;
 import com.recrutement.models.User;
 
@@ -54,6 +53,8 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	@Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+	@Autowired
+	private CandidatRepository candidatRepo;
 	@Override
 	public User addUser(User user) {
 		return userRepository.save(user);
@@ -66,7 +67,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
 	@Override
 	public User findById(Integer id) {
-	    return userRepository.getOne(id);
+	    return userRepository.findById(id).get();
 	}
 
 	@Override
@@ -170,36 +171,6 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		}
 		return false;
 	}
-	
-	/*@Override
-	public boolean requestPwd(String email) {
-		User user= userRepository.findByEmail(email).get();
-		System.out.println("hello");
-		
-		
-		if (user != null){
-			SimpleMailMessage msg = new SimpleMailMessage();
-	        msg.setTo(user.getEmail());
-	        msg.setSubject("Request to change password");	
-			msg.setText("voici le lien pour changer le mot de passe");
-	        javaMailSender.send(msg);
-			/*final String token = jwtTokenUtil.generateToken(user);
-
-            SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setTo(email);
-            mailMessage.setSubject("Complete Password Reset!");
-            mailMessage.setFrom("test-email@gmail.com");
-            mailMessage.setText("To complete the password reset process, please click here: "
-              + "http://localhost:8088/confirm-reset?token="+token);
-
-            // Send the email
-            javaMailSender.send(mailMessage);
-	        
-	       
-	        return true;
-		}
-		return false;
-	}*/
 
 	@Override
 	public Optional<User> findUserByResetToken(String resetToken) {
@@ -211,6 +182,19 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		return userRepository.findByEmail(mail).isPresent();
 		
 	}
+
+	@Override
+	public Candidat edit(Candidat ca) {
+		candidatRepo.save(ca);
+		return ca;
+	}
+
+	@Override
+	public List<Candidat> getListCandidat() {
+		return candidatRepo.findAll();
+	}
+
+	
 
 	
 }

@@ -3,7 +3,6 @@ package com.recrutement.service;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.recrutement.dao.OffreRepository;
@@ -30,6 +29,7 @@ public class OffreServiceImpl implements OffreService {
 	
 	@Override
 	public List<Offre> getAllFiltred() {
+		System.out.println("OffreServiceImpl.getAllFiltred()");
 		return offreRepository.findAll().stream()
 				.sorted(Comparator.comparing(Offre::getDateAjout).reversed())              
 				.filter(offre -> offre.getEtat().equals("disponible"))

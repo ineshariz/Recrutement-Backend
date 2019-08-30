@@ -1,6 +1,5 @@
 package com.recrutement.controller;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.recrutement.models.Candidat;
-import com.recrutement.models.Quiz;
 import com.recrutement.models.Recruteur;
 import com.recrutement.models.Offre;
 import com.recrutement.models.User;
@@ -36,6 +34,12 @@ public class UserController {
 	@RequestMapping(value="/pwd/{id}/{oldpwd}/{newpwd}",method=RequestMethod.GET)
     public boolean changePwd(@PathVariable int id, @PathVariable String oldpwd,@PathVariable String newpwd) {
 		return userService.changePwd(id, oldpwd, newpwd);  
+	}	
+	
+	
+	@RequestMapping(value="/user/{id}",method=RequestMethod.GET)
+    public User finduserbyId(@PathVariable Integer id) {
+		return userService.findById(id);  
 	}
 	
 	@RequestMapping(value="/recruteur/{email}",method=RequestMethod.GET)
@@ -67,4 +71,14 @@ public class UserController {
     public List<Number> nombrecandidat(@PathVariable Offre offre) {
 		return userService.nombreCandidat(offre);  
 	}
+		
+	@RequestMapping(value="/update",method=RequestMethod.PUT)
+   	public Candidat update(@RequestBody Candidat ca) {
+		return userService.edit(ca);
+   }
+	@RequestMapping(method=RequestMethod.GET)
+	public List<Candidat> getListCandidat(){
+		return userService.getListCandidat();
+	}
+	
 }

@@ -46,6 +46,11 @@ public class PostulerController {
 		demande.setEtat("refusé");
 		return ps.add(demande);
    }
+
+	@RequestMapping(value="/date",method=RequestMethod.PUT)
+   	public Demande dateentreitien(@RequestBody Demande demande) {
+		return ps.add(demande);
+   }
 	
 	@RequestMapping(value="/entretien/{id}",method=RequestMethod.GET)
     public Demande find(@PathVariable Integer id) {

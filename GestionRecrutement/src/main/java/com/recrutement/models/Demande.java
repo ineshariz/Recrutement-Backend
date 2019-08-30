@@ -44,14 +44,6 @@ public class Demande {
 	private Offre offre;
 	
 	
-	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "choixdate_id")
-    private ChoixDateEntretien choixDate;
-	
-	
-	@Column
-	private Date dateEntretien;
-	
 	@OneToOne(mappedBy = "demande")
 	@JsonManagedReference
     private ResultatQuiz resultatQuiz;
@@ -102,19 +94,6 @@ public class Demande {
 
 	public void setOffre(Offre offre) {
 		this.offre = offre;
-	}
-
-	
-	public ChoixDateEntretien getChoixDate() {
-		return choixDate;
-	}
-	
-	public Date getDateEntretien() {
-		return dateEntretien;
-	}
-
-	public void setDateEntretien(Date dateEntretien) {
-		this.dateEntretien = dateEntretien;
 	}
 
 	public ResultatQuiz getResultatQuiz() {
